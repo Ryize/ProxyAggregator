@@ -38,7 +38,13 @@ def get_random_user_agent() -> dict:
 proxy = []
 
 
-def get_proxy_list():
+def get_proxy_list() -> list:
+    """
+    Получение списка прокси.
+
+    Returns:
+        list: список со словарями. В словаре данные прокси.
+    """
     html = requests.get(
         f'https://free-proxy-list.net/',
         headers=get_random_user_agent()).text
