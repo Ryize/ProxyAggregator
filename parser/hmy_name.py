@@ -1,7 +1,6 @@
 import random
 import threading
 import time
-from pprint import pprint
 
 import requests
 
@@ -38,35 +37,20 @@ proxy = []
 
 
 def get_proxy_list():
-    html = requests.get('https://hmy.name/proxy-list/',
-                        headers=get_random_user_agent()).text
-    soup = BeautifulSoup(html, 'lxml')
-
-    proxy_list_amount = int(soup.find(
-        'div', class_='pagination'
-    ).find_all('li')[-2].text) // 10 - 1
-
-    for num_page in range(proxy_list_amount):
-        thread = threading.Thread(target=_parser, args=(num_page,))
-        thread.start()
-        if num_page % 4 == 0:
-            pprint(proxy)
-            print(len(proxy))
-            print(len(threading.enumerate()))
-            time.sleep(2)
-        time.sleep(0.3)
+    _parser()
 
     while len(threading.enumerate()) >= 3:
         time.sleep(1)
     return proxy
 
 
-def _parser(num_page):
+def _parser():
     html = requests.get(
-        f'https://hmy.name/proxy-list/?start={num_page * 64}#list',
-        headers=get_random_user_agent()).text
+        f'https://hidexx.name/proxy-list/').text
     soup = BeautifulSoup(html, 'lxml')
     for i in soup.find_all('tr'):
+        if i.find_all('td')[0].text.count('а'):
+            continue
         proxy.append({})
         proxy_ = proxy[-1]
         proxy_['ip'] = i.find_all('td')[0].text
@@ -75,4 +59,4 @@ def _parser(num_page):
         proxy_['proxy_type'] = i.find_all('td')[4].text
         proxy_['anonym'] = i.find_all('td')[5].text
 
-# get_proxy_list()
+get_proxy_list()
