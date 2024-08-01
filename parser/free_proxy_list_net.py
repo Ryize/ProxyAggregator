@@ -61,7 +61,3 @@ def get_proxy_list() -> list:
         proxy_type = i.find_all('td')[6].text
         proxy_['proxy_type'] = 'HTTP' if proxy_type == 'no' else 'HTTPS'
     return proxy
-
-# get_proxy_list()
-# pprint(proxy)
-# print(len(proxy))

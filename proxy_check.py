@@ -1,4 +1,4 @@
-import threading
+import multiprocessing, threading
 import time
 import traceback
 
@@ -71,4 +71,5 @@ def infinity_checker():
         time.sleep(300)
 
 
-threading.Thread(target=infinity_checker).start()
+def check_start():
+    multiprocessing.Process(target=infinity_checker).start()

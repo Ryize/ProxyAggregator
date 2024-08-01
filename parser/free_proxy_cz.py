@@ -68,8 +68,3 @@ def get_proxy_list():
                 'anonym'] = 'Elite' if 'elite' in proxy_type.lower() else 'Нет'
             proxy_['proxy_type'] = proxy_type.replace('ELITE', '')
     return proxy
-
-
-# get_proxy_list()
-# pprint(proxy)
-# print(len(proxy))

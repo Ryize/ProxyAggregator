@@ -58,5 +58,3 @@ def _parser():
         proxy_['address'] = i.find_all('td')[2].text
         proxy_['proxy_type'] = i.find_all('td')[4].text
         proxy_['anonym'] = i.find_all('td')[5].text
-
-get_proxy_list()
