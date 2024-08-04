@@ -27,7 +27,6 @@ cd ProxyAggregator
 ```
 pip3 install -r requirements.txt
 ```
-<br>
 
 Запустите проект:
 ```
