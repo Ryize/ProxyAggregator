@@ -33,5 +33,4 @@ pip3 install -r requirements.txt
 python3 app.py
 ```
 
-<br>
 > Технологии, использованные в проекте: Python 3, requests, BeautifulSoup, Flask
